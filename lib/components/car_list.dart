@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobcar/components/menu.dart';
+
+import '../views/home.dart';
 
 class CarList extends StatelessWidget {
   const CarList({Key? key}) : super(key: key);
@@ -41,7 +44,65 @@ class CarList extends StatelessWidget {
                         minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
-                      onPressed: () {},
+                      onPressed: () => showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (_) => AlertDialog(
+                                title: const Text('Title'),
+                                content: SingleChildScrollView(
+                                  child: ListBody(
+                                    children: <Widget>[
+                                      Row(
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: const [
+                                              Text('Marca'),
+                                              Text('Modelo')
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            width: 80,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: const [
+                                              Text('Ano'),
+                                              Text('Valor')
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () => {},
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: (16)),
+                                        primary: (const Color(0xff000000)),
+                                      ),
+                                      child: const Text(
+                                        'Reservar',
+                                        style: TextStyle(
+                                            color: Color(0xfffafafa),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )),
                       child: Text('View More',
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
