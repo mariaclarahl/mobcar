@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobcar/components/menu.dart';
 
 class CarList extends StatelessWidget {
   const CarList({Key? key}) : super(key: key);
@@ -22,10 +23,7 @@ class CarList extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.more_vert, color: Colors.black),
-                onPressed: () => {},
-              ),
+              trailing: const Menu(),
               isThreeLine: true,
               title: const Text("Title",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
