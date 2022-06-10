@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobcar/components/car_list.dart';
 import 'package:mobcar/components/navbar.dart';
 
 class Home extends StatelessWidget {
@@ -30,11 +31,53 @@ class Home extends StatelessWidget {
               ),
             ]),
         endDrawer: const Navbar(),
-        body: SingleChildScrollView(
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Container(
-              padding: const EdgeInsets.only(top: 40),
-              child: const Text('data'))
-        ])));
+        body: Container(
+            color: const Color(0xfffafafa),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      'Title 1',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Title 2',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context).secondaryHeaderColor)),
+                      ElevatedButton(
+                        onPressed: () => {},
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: (6), horizontal: (12)),
+                          primary: (const Color(0xff000000)),
+                        ),
+                        child: const Text(
+                          'Add new',
+                          style: TextStyle(
+                              color: Color(0xfffafafa),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      )
+                    ]),
+                const Divider(
+                  color: Colors.black,
+                  height: 16,
+                ),
+                const Expanded(child: CarList())
+              ],
+            )));
   }
 }

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         primaryColor: const Color(0xff00adee),
-        primarySwatch: Colors.grey,
+        secondaryHeaderColor: const Color(0xff595959),
       ),
     );
   }
