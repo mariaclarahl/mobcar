@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobcar/components/car_list.dart';
+import 'package:mobcar/components/modal_new.dart';
 import 'package:mobcar/components/navbar.dart';
 
 class Home extends StatelessWidget {
@@ -54,7 +55,11 @@ class Home extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                               color: Theme.of(context).secondaryHeaderColor)),
                       ElevatedButton(
-                        onPressed: () => {},
+                        onPressed: () => showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (_) => const ModalNew(),
+                        ),
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
