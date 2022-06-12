@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobcar/models/car.dart';
 import 'modal_view.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({Key? key}) : super(key: key);
+  const Menu({Key? key, required this.car}) : super(key: key);
+
+  final Car? car;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => const ModalView(),
+                      builder: (_) => ModalView(car!),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
@@ -31,7 +34,7 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => const ModalView(),
+                      builder: (_) => ModalView(car!),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
@@ -48,7 +51,7 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => const ModalView(),
+                      builder: (_) => ModalView(car!),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,

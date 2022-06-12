@@ -2,9 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mobcar/components/car_list.dart';
 import 'package:mobcar/components/modal_new.dart';
 import 'package:mobcar/components/navbar.dart';
+import 'package:mobcar/api.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  HomeState createState() => HomeState();
+}
+
+class HomeState extends State<Home> {
+  HomeState() {
+    ApiService;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +91,7 @@ class Home extends StatelessWidget {
                   color: Colors.black,
                   height: 16,
                 ),
-                const Expanded(child: CarList())
+                const Expanded(child: CarList(cars: [], key: null))
               ],
             )));
   }

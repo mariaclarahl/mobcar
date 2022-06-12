@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobcar/components/menu.dart';
-import 'package:mobcar/components/modal_view.dart';
-
-import '../views/home.dart';
+import 'package:mobcar/components/car_tile.dart';
+import 'package:mobcar/models/car.dart';
 
 class CarList extends StatelessWidget {
-  const CarList({Key? key}) : super(key: key);
+  final List<Car> cars;
+  const CarList({required Key? key, required this.cars}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +13,9 @@ class CarList extends StatelessWidget {
               color: Colors.black,
               height: 0,
             ),
-        itemCount: 15,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
+        itemCount: cars.length,
+        itemBuilder: (BuildContext context, int index) => CarTile(cars[index]));
+    /*  return ListTile(
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
@@ -56,7 +54,6 @@ class CarList extends StatelessWidget {
                               fontSize: 10,
                               fontWeight: FontWeight.w300)),
                     )
-                  ]));
-        });
+                  ])); */
   }
 }

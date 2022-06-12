@@ -1,26 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:mobcar/models/car.dart';
 
 class ModalView extends StatelessWidget {
-  const ModalView({Key? key}) : super(key: key);
+  final Car car;
+
+  const ModalView(this.car);
 
   @override
   Widget build(BuildContext context) {
+    final imagem = car.imagem == null || car.imagem!.isEmpty
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.network(
+              'https://icones.pro/wp-content/uploads/2021/03/icone-de-voiture-symbole-png-noir.png',
+              width: 310,
+              height: 120,
+              fit: BoxFit.fitHeight,
+            ),
+          )
+        : ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.network(
+              car.imagem.toString(),
+              width: 310,
+              height: 120,
+              fit: BoxFit.cover,
+            ),
+          );
     return AlertDialog(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Wrap(
-            children: const [
-              Icon(
-                Icons.directions_car,
-                color: Colors.black,
-                size: 25,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text('Title'),
-            ],
+          Flexible(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(
+                  Icons.directions_car,
+                  color: Colors.black,
+                  size: 25,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Flexible(
+                  child: Text(
+                    "${car.modelo}${car.marca}",
+                  ),
+                ),
+              ],
+            ),
           ),
           IconButton(
               onPressed: () => {Navigator.pop(context)},
@@ -32,15 +62,7 @@ class ModalView extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    'https://motorshow.com.br/wp-content/uploads/sites/2/2019/01/dodge-challenger-e1546547487415.jpg',
-                    width: 310,
-                    height: 120,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                imagem,
                 Row(
                   children: const [
                     Icon(
@@ -74,20 +96,20 @@ class ModalView extends StatelessWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('Marca'),
-                        SizedBox(height: 16),
-                        Text('Modelo')
+                      children: [
+                        Text(car.marca),
+                        const SizedBox(height: 16),
+                        Text(car.modelo)
                       ],
                     ),
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('Ano'),
-                        SizedBox(height: 16),
-                        Text('Valor')
+                      children: [
+                        Text(car.ano),
+                        const SizedBox(height: 16),
+                        Text(car.valor)
                       ],
                     ),
                   )
