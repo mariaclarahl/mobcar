@@ -1,10 +1,8 @@
-// ignore_for_file: avoid_print
-
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobcar/api.dart';
-import 'package:mobcar/models/marca.dart';
+
+import 'package:mobcar/models/marca_model.dart';
+import 'package:mobcar/services/marca_service.dart';
 
 class SelectMarca extends StatefulWidget {
   const SelectMarca({Key? key}) : super(key: key);
@@ -14,38 +12,43 @@ class SelectMarca extends StatefulWidget {
 }
 
 class _SelectMarcaState extends State<SelectMarca> {
-  List<Marca> lsMarca = [];
+  late final Dio dio;
+  late final MarcaService marcaService;
 
-  String? value;
+  MarcaModel? selectedMarca;
 
-  _SelectMarcaState() {
-    _getListaMarca();
-  }
-
-  _getListaMarca() async {
-    ApiService.getMarca().then((response) {
-      setState(() {
-        if (response.statusCode == 200) {
-          var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
-          lsMarca = jsonResponse['data']
-              .map<Marca>((json) => Marca.fromJson(json))
-              .toList();
-        }
-      });
-    });
+  @override
+  void initState() {
+    dio = Dio(BaseOptions(baseUrl: 'https://parallelum.com.br/fipe/api/v1'));
+    marcaService = MarcaService(dio);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<Marca>(
-      hint: const Text('Marca'),
-      items: lsMarca
-          .map((marca) => DropdownMenuItem(
-                value: marca,
-                child: Text(marca.nome),
-              ))
-          .toList(),
-      onChanged: (Object? value) {},
+    return FutureBuilder<List<MarcaModel>>(
+      future: marcaService.fetchAllMarcas(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const CircularProgressIndicator();
+        } else {
+          final List<MarcaModel> marcas = snapshot.data!;
+          return DropdownButton<MarcaModel>(
+            items: marcas
+                .map(
+                  (marca) => DropdownMenuItem(
+                    value: marca,
+                    child: Text(marca.nome),
+                  ),
+                )
+                .toList(),
+            onChanged: (value) => setState(() {
+              selectedMarca = value;
+            }),
+            value: selectedMarca,
+          );
+        }
+      },
     );
   }
 }

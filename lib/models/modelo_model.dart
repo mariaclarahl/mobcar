@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Marca {
+class ModeloModel {
   final String codigo;
   final String nome;
 
-  Marca({
+  ModeloModel({
     required this.codigo,
     required this.nome,
   });
@@ -17,8 +17,8 @@ class Marca {
     };
   }
 
-  factory Marca.fromMap(Map<String, dynamic> map) {
-    return Marca(
+  factory ModeloModel.fromMap(Map<String, dynamic> map) {
+    return ModeloModel(
       codigo: map['codigo'] as String,
       nome: map['nome'] as String,
     );
@@ -26,14 +26,14 @@ class Marca {
 
   String toJson() => json.encode(toMap());
 
-  factory Marca.fromJson(String source) =>
-      Marca.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ModeloModel.fromJson(String source) =>
+      ModeloModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Marca && other.codigo == codigo && other.nome == nome;
+    return other is ModeloModel && other.codigo == codigo && other.nome == nome;
   }
 
   @override

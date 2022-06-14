@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mobcar/components/car_list.dart';
 import 'package:mobcar/components/modal_new.dart';
 import 'package:mobcar/components/navbar.dart';
-import 'package:mobcar/api.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,9 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  HomeState() {
-    ApiService;
-  }
+  HomeState();
 
   @override
   Widget build(BuildContext context) {
