@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mobcar/models/car.dart';
 
 class ModalView extends StatelessWidget {
-  final Car car;
+/*   final Car car;
 
-  const ModalView(this.car);
+  const ModalView(this.car); */
 
   @override
   Widget build(BuildContext context) {
-    final imagem = car.imagem == null || car.imagem!.isEmpty
+/*     final imagem = car.imagem == null || car.imagem!.isEmpty
         ? ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
@@ -26,7 +25,7 @@ class ModalView extends StatelessWidget {
               height: 120,
               fit: BoxFit.cover,
             ),
-          );
+          ); */
     return AlertDialog(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,18 +34,18 @@ class ModalView extends StatelessWidget {
           Flexible(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(
+              children: const [
+                Icon(
                   Icons.directions_car,
                   color: Colors.black,
                   size: 25,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 5,
                 ),
                 Flexible(
                   child: Text(
-                    "${car.modelo}${car.marca}",
+                    "Visualizar",
                   ),
                 ),
               ],
@@ -62,7 +61,15 @@ class ModalView extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                imagem,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://motorshow.com.br/wp-content/uploads/sites/2/2021/03/09_hb20_premium.jpg',
+                    width: 310,
+                    height: 120,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
                 Row(
                   children: const [
                     Icon(
@@ -96,20 +103,20 @@ class ModalView extends StatelessWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(car.marca),
-                        const SizedBox(height: 16),
-                        Text(car.modelo)
+                      children: const [
+                        Text('Hyundai'),
+                        SizedBox(height: 16),
+                        Text('HB20')
                       ],
                     ),
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(car.ano),
-                        const SizedBox(height: 16),
-                        Text(car.valor)
+                      children: const [
+                        Text('2022'),
+                        SizedBox(height: 16),
+                        Text('R\$59.890S')
                       ],
                     ),
                   )

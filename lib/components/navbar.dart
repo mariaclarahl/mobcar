@@ -34,6 +34,7 @@ class Navbar extends StatelessWidget {
           constraints: const BoxConstraints.expand(),
           child: Drawer(
             child: Container(
+              height: MediaQuery.of(context).size.height,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
@@ -43,28 +44,28 @@ class Navbar extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   const SizedBox(
-                    height: 150,
+                    height: 120,
                   ),
                   Text(
                     'Homepage',
                     style: TextStyle(
                       fontFamily: 'Avenir',
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.w700,
                       color: Theme.of(context).primaryColor,
                     ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Menu item 2',
+                      'Dados de Acesso',
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).primaryColor,
                       ),
@@ -72,15 +73,15 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Menu item 3',
+                      'Notificações',
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).primaryColor,
                       ),
@@ -88,15 +89,15 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Menu item 4',
+                      'Histórico',
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).primaryColor,
                       ),
@@ -104,15 +105,15 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Menu item 5',
+                      'Pagamentos',
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).primaryColor,
                       ),
@@ -120,15 +121,15 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Menu item 6',
+                      'Ajuda e  Feedback',
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).primaryColor,
                       ),
@@ -136,7 +137,7 @@ class Navbar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   Expanded(
                       child: Align(
@@ -153,7 +154,7 @@ class Navbar extends StatelessWidget {
                           ),
                           Flexible(
                             child: Text(
-                              '2020. All rights reserved to Mobcar.',
+                              '2022. All rights reserved to Mobcar.',
                               style: TextStyle(
                                 fontFamily: 'Avenir',
                                 fontSize: 14,

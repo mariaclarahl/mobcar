@@ -7,14 +7,15 @@ import 'package:mobcar/services/modelo_service.dart';
 import 'package:mobcar/controllers/marca_controller.dart';
 import 'package:mobcar/controllers/modelo_controller.dart';
 
-class SelectModelo extends StatefulWidget {
-  const SelectModelo({Key? key}) : super(key: key);
+class Selects extends StatefulWidget {
+  const Selects({Key? key}) : super(key: key);
 
   @override
-  _SelectModeloState createState() => _SelectModeloState();
+  // ignore: library_private_types_in_public_api
+  _SelectsState createState() => _SelectsState();
 }
 
-class _SelectModeloState extends State<SelectModelo> {
+class _SelectsState extends State<Selects> {
   late final Dio dio;
   late final MarcaService marcaService;
   late final ModeloService modeloService;
@@ -38,15 +39,19 @@ class _SelectModeloState extends State<SelectModelo> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        AnimatedBuilder(
-            animation: marcaController,
-            builder: (_, __) {
-              if (marcaController.marcaList != null) {
-                return Flexible(
-                  flex: 1,
-                  child: DropdownButton<MarcaModel>(
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: AnimatedBuilder(
+              animation: marcaController,
+              builder: (_, __) {
+                if (marcaController.marcaList != null) {
+                  return DropdownButtonFormField<MarcaModel>(
+                    isExpanded: true,
+                    isDense: true,
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
                     hint: const Text('Marca'),
                     value: marcaController.selectedMarca,
                     items: marcaController.marcaList!
@@ -59,34 +64,37 @@ class _SelectModeloState extends State<SelectModelo> {
                       marcaController.setSelectedMarca(value!);
                       modeloController.getModeloListFromMarca(value);
                     },
-                  ),
-                );
-              } else {
-                return const CircularProgressIndicator();
-              }
-            }),
+                  );
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              }),
+        ),
         const SizedBox(width: 20.0),
-        AnimatedBuilder(
-            animation: modeloController,
-            builder: (_, __) {
-              if (marcaController.selectedMarca == null) {
-                return Flexible(
-                  flex: 2,
-                  child: DropdownButton<void>(
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: AnimatedBuilder(
+              animation: modeloController,
+              builder: (_, __) {
+                if (marcaController.selectedMarca == null) {
+                  return DropdownButtonFormField<void>(
+                    isExpanded: true,
+                    isDense: true,
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
                     hint: const Text('Modelo'),
                     items: const [],
                     onChanged: (value) => {},
-                    isExpanded: true,
-                  ),
-                );
-              } else {
-                if (modeloController.modeloList == null) {
-                  return const CircularProgressIndicator();
+                  );
                 } else {
-                  return Expanded(
-                    flex: 2,
-                    child: DropdownButton<ModeloModel>(
+                  if (modeloController.modeloList == null) {
+                    return const CircularProgressIndicator();
+                  } else {
+                    return DropdownButtonFormField<ModeloModel>(
                       value: modeloController.selectedModelo,
+                      isDense: true,
+                      decoration:
+                          const InputDecoration(border: OutlineInputBorder()),
                       isExpanded: true,
                       hint: const Text('Modelo'),
                       items: modeloController.modeloList!
@@ -97,11 +105,11 @@ class _SelectModeloState extends State<SelectModelo> {
                           .toList(),
                       onChanged: (value) =>
                           modeloController.setSelectedModelo(value!),
-                    ),
-                  );
+                    );
+                  }
                 }
-              }
-            }),
+              }),
+        ),
       ],
     );
   }

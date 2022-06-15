@@ -1,10 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:mobcar/components/car_tile.dart';
-import 'package:mobcar/models/car.dart';
 
 class CarList extends StatelessWidget {
-  final List<Car> cars;
-  const CarList({required Key? key, required this.cars}) : super(key: key);
+  const CarList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,47 +12,9 @@ class CarList extends StatelessWidget {
               color: Colors.black,
               height: 0,
             ),
-        itemCount: cars.length,
-        itemBuilder: (BuildContext context, int index) => CarTile(cars[index]));
-    /*  return ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  'https://motorshow.com.br/wp-content/uploads/sites/2/2019/01/dodge-challenger-e1546547487415.jpg',
-                  width: 48,
-                  height: 48,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              trailing: const Menu(),
-              isThreeLine: true,
-              title: const Text("Title",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Year',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).secondaryHeaderColor,
-                            fontWeight: FontWeight.w400)),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      onPressed: () => showDialog(
-                        barrierDismissible: false,
-                        context: context,
-                        builder: (_) => const ModalView(),
-                      ),
-                      child: Text('View More',
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w300)),
-                    )
-                  ])); */
+        itemCount: 20,
+        itemBuilder: (BuildContext context, int index) {
+          return CarTile(context);
+        });
   }
 }

@@ -17,14 +17,14 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => ModalView(car!),
+                      builder: (_) => ModalView(),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('View',
+                child: Text('Visualizar',
                     style: TextStyle(
                         color: Theme.of(context).secondaryHeaderColor,
                         fontWeight: FontWeight.w400,
@@ -34,14 +34,14 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => ModalView(car!),
+                      builder: (_) => ModalView(),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('Edit',
+                child: Text('Editar',
                     style: TextStyle(
                         color: Theme.of(context).secondaryHeaderColor,
                         fontWeight: FontWeight.w400,
@@ -51,14 +51,14 @@ class Menu extends StatelessWidget {
                 onPressed: () => showDialog(
                       barrierDismissible: false,
                       context: context,
-                      builder: (_) => ModalView(car!),
+                      builder: (_) => ModalView(),
                     ),
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('Delete',
+                child: Text('Excluir',
                     style: TextStyle(
                         color: Theme.of(context).secondaryHeaderColor,
                         fontWeight: FontWeight.w400,

@@ -4,13 +4,16 @@ import 'package:mobcar/components/modal_view.dart';
 import 'package:mobcar/models/car.dart';
 
 class CarTile extends StatelessWidget {
-  final Car car;
+  // ignore: use_key_in_widget_constructors
+  const CarTile(BuildContext context);
 
-  const CarTile(this.car);
+  /* final Car car;
+
+  const CarTile(this.car); */
 
   @override
   Widget build(BuildContext context) {
-    final imagem = car.imagem == null || car.imagem!.isEmpty
+    /*    final imagem = car.imagem == null || car.imagem!.isEmpty
         ? ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
@@ -28,18 +31,26 @@ class CarTile extends StatelessWidget {
               height: 48,
               fit: BoxFit.cover,
             ),
-          );
+          ); */
     return ListTile(
-        leading: imagem,
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Image.network(
+            'https://motorshow.com.br/wp-content/uploads/sites/2/2021/03/09_hb20_premium.jpg',
+            width: 48,
+            height: 48,
+            fit: BoxFit.cover,
+          ),
+        ),
         trailing: const Menu(
           car: null,
         ),
         isThreeLine: true,
-        title: Text("${car.modelo} ${car.marca}",
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+        title: const Text("Hyundai HB20",
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
         subtitle:
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(car.ano,
+          Text('2022',
               style: TextStyle(
                   fontSize: 14,
                   color: Theme.of(context).secondaryHeaderColor,
@@ -53,9 +64,9 @@ class CarTile extends StatelessWidget {
             onPressed: () => showDialog(
               barrierDismissible: false,
               context: context,
-              builder: (_) => ModalView(car),
+              builder: (_) => ModalView(),
             ),
-            child: Text('View More',
+            child: Text('Ver Mais',
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 10,

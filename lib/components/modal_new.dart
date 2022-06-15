@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobcar/components/select_marca.dart';
 
 import 'select_ano.dart';
-import 'select_modelo.dart';
+import 'selects.dart';
 
 class ModalNew extends StatelessWidget {
   const ModalNew({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class ModalNew extends StatelessWidget {
               SizedBox(
                 width: 5,
               ),
-              Text('Title'),
+              Text('Adicionar'),
             ],
           ),
           IconButton(
@@ -71,8 +71,7 @@ class ModalNew extends StatelessWidget {
                 ),
               ],
             ),
-            const SelectMarca(),
-            const SelectModelo(),
+            const Selects(),
             const SelectAno(),
             const TextField(
               keyboardType: TextInputType.text,
